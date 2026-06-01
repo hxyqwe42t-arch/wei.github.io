@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>姜惟 | Personal Website</title>
+<title>JIANG WEI Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -12,380 +14,409 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
-scroll-behavior:smooth;
 }
 
 body{
+
+font-family:'Inter',sans-serif;
 background:#050505;
-color:#fff;
-overflow-x:hidden;
-}
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(
-circle at var(--x) var(--y),
-rgba(255,255,255,.12),
-transparent 28%
-);
-pointer-events:none;
-}
-
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:30px 60px;
-z-index:999;
-backdrop-filter:blur(12px);
-}
-
-.logo{
-font-size:22px;
-letter-spacing:5px;
-font-weight:700;
-}
-
-nav ul{
-display:flex;
-gap:35px;
-list-style:none;
-}
-
-nav a{
-text-decoration:none;
 color:white;
-opacity:.7;
-transition:.3s;
+overflow-x:hidden;
+
 }
 
-nav a:hover{
-opacity:1;
+/* 背景动态光 */
+
+.bg{
+
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-2;
+
+background:
+radial-gradient(circle at 20% 30%,rgba(255,255,255,.12),transparent 40%),
+radial-gradient(circle at 80% 70%,rgba(120,120,255,.12),transparent 40%),
+#050505;
+
+animation:move 10s ease-in-out infinite alternate;
+
 }
+
+@keyframes move{
+
+0%{
+transform:scale(1);
+}
+
+100%{
+transform:scale(1.2);
+}
+
+}
+
+/* noise */
+
+body::after{
+
+content:'';
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background-image:url('https://grainy-gradients.vercel.app/noise.svg');
+
+opacity:.03;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+/* hero */
 
 .hero{
+
 height:100vh;
+
 display:flex;
-flex-direction:column;
+
 justify-content:center;
+
 align-items:center;
-text-align:center;
-padding:20px;
+
+padding:80px;
+
 }
 
-.name{
-font-size:1rem;
-letter-spacing:8px;
-color:#8f8f8f;
-margin-bottom:15px;
+.content{
+
+max-width:1200px;
+
+width:100%;
+
 }
 
-.hero h1{
+.cn{
 
-font-size:7rem;
-line-height:1;
+font-size:18px;
+
+opacity:0;
+
+animation:fadeUp 1.8s ease forwards;
+
+animation-delay:.6s;
+
+letter-spacing:4px;
+
+color:#9e9e9e;
+
+margin-bottom:30px;
+
+}
+
+h1{
+
+font-size:110px;
+
+font-weight:700;
+
+line-height:0.9;
+
+letter-spacing:-6px;
+
+opacity:0;
+
+animation:fadeUp 1.5s ease forwards;
+
+}
+
+h2{
+
+font-size:28px;
+
+font-weight:300;
+
+margin-top:20px;
+
 letter-spacing:10px;
-text-transform:uppercase;
 
-background:linear-gradient(
-90deg,
-#ffffff,
-#888,
-#ffffff
-);
+color:#8f8f8f;
 
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+opacity:0;
 
-animation:fadeUp 1s ease;
+animation:fadeUp 1.6s ease forwards;
+
+animation-delay:.2s;
+
 }
 
-.hero p{
-margin-top:25px;
-font-size:1.1rem;
-color:#aaa;
-max-width:720px;
-line-height:1.8;
+.tagline{
+
+margin-top:40px;
+
+font-size:20px;
+
+font-weight:300;
+
+max-width:600px;
+
+line-height:1.9;
+
+color:#bfbfbf;
+
+opacity:0;
+
+animation:fadeUp 2s ease forwards;
+
+animation-delay:1s;
+
 }
 
-.btn{
-
-margin-top:45px;
-padding:16px 38px;
-
-background:transparent;
-border:1px solid #fff;
+.highlight{
 
 color:white;
 
-cursor:pointer;
-transition:.35s;
-}
-
-.btn:hover{
-
-background:white;
-color:black;
-transform:translateY(-4px);
+font-weight:600;
 
 }
 
-section{
-padding:140px 10%;
-}
+/* scroll */
 
-.section-title{
-font-size:3rem;
-margin-bottom:70px;
-}
+.scroll{
 
-.cards{
+position:absolute;
 
-display:grid;
+bottom:50px;
 
-grid-template-columns:
-repeat(auto-fit,minmax(280px,1fr));
+left:50%;
 
-gap:30px;
-}
+transform:translateX(-50%);
 
-.card{
+font-size:13px;
 
-background:#111;
-padding:40px;
-border:1px solid #222;
-border-radius:22px;
+letter-spacing:5px;
 
-transition:.4s;
-}
+opacity:.4;
 
-.card:hover{
-
-transform:translateY(-10px);
-border-color:#777;
-
-box-shadow:
-0 0 30px rgba(255,255,255,.08);
+animation:float 2s infinite;
 
 }
 
-.card h3{
+@keyframes float{
 
-margin-bottom:18px;
-letter-spacing:3px;
-
+0%{
+transform:translate(-50%,0);
 }
 
-.card p{
-color:#b9b9b9;
-line-height:1.7;
+50%{
+transform:translate(-50%,10px);
 }
 
-footer{
-
-padding:70px;
-text-align:center;
-color:#666;
+100%{
+transform:translate(-50%,0);
+}
 
 }
 
 @keyframes fadeUp{
 
 from{
+
 opacity:0;
-transform:translateY(50px);
+
+transform:translateY(60px);
+
 }
 
 to{
+
 opacity:1;
+
 transform:translateY(0);
-}
 
 }
 
-@media(max-width:768px){
-
-.hero h1{
-font-size:3.5rem;
 }
 
-nav{
-padding:25px;
+/* section */
+
+.section{
+
+padding:160px 10%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+gap:100px;
+
 }
 
-nav ul{
-display:none;
+.section-title{
+
+font-size:16px;
+
+letter-spacing:5px;
+
+color:#7a7a7a;
+
+}
+
+.section-text{
+
+font-size:42px;
+
+line-height:1.5;
+
+max-width:900px;
+
+font-weight:300;
+
+}
+
+.section-text span{
+
+font-weight:600;
+
+}
+
+/* responsive */
+
+@media(max-width:900px){
+
+h1{
+
+font-size:64px;
+
+}
+
+.section{
+
+flex-direction:column;
+}
+
+.section-text{
+
+font-size:28px;
+
 }
 
 }
 
 </style>
 </head>
-
 <body>
 
-<nav>
-
-<div class="logo">
-姜惟
-</div>
-
-<ul>
-
-<li><a href="#about">ABOUT</a></li>
-<li><a href="#work">WORK</a></li>
-<li><a href="#contact">CONTACT</a></li>
-
-</ul>
-
-</nav>
+<div class="bg"></div>
 
 <section class="hero">
 
-<div class="name">
-JIANG WEI
+<div class="content">
+
+<div class="cn">
+
+个人创作 / 视觉设计 / 绘画表达
+
 </div>
 
 <h1>
-ASK<br>THE<br>SPIDER
+
+姜惟
+
 </h1>
 
-<p>
+<h2>
 
-你好，我是姜惟。
+JIANG WEI
 
-插画、设计、创意表达、视觉实验。
-
-我喜欢把想法做成画面，把情绪藏进颜色、线条和网页里。
-
-这里不是普通主页。
-
-这是我的个人宇宙。
-
-</p>
-
-<button class="btn">
-ENTER MY WORLD
-</button>
-
-</section>
-
-<section id="about">
-
-<h2 class="section-title">
-ABOUT ME
 </h2>
 
-<div class="cards">
+<div class="tagline">
 
-<div class="card">
+Personal Creative Portfolio.
 
-<h3>ILLUSTRATION</h3>
+Exploring the intersection of
 
-<p>
-喜欢画画、角色设计、氛围感视觉。
-把脑子里的世界一点点拖出来落地。
-</p>
+<span class="highlight">
 
-</div>
+drawing, visual storytelling and experimental design.
 
-<div class="card">
+</span>
 
-<h3>DESIGN</h3>
-
-<p>
-极简、暗色、未来感、实验风格。
-让视觉看起来像深夜偷偷长出来的东西。
-</p>
+以视觉记录情绪、想法与未完成的世界。
 
 </div>
 
-<div class="card">
-
-<h3>CREATION</h3>
-
-<p>
-网站、视觉、创意表达。
-持续制造一些无法被简单定义的作品。
-</p>
-
 </div>
+
+<div class="scroll">
+
+SCROLL
 
 </div>
 
 </section>
 
-<section id="work">
+<section class="section">
 
-<h2 class="section-title">
-PROJECTS
-</h2>
+<div class="section-title">
 
-<div class="cards">
-
-<div class="card">
-
-<h3>VOID</h3>
-
-<p>
-个人视觉实验项目。
-</p>
+ABOUT
 
 </div>
 
-<div class="card">
+<div class="section-text">
 
-<h3>NEON DREAM</h3>
+我专注于
 
-<p>
-未来感网页概念设计。
-</p>
+<span>画画、创作与视觉设计。</span>
 
-</div>
+喜欢在极简结构中保留情绪感，
 
-<div class="card">
-
-<h3>JIANG WEI LAB</h3>
-
-<p>
-插画 / UI / 创意探索空间。
-</p>
-
-</div>
+让图像、排版与光影形成一种安静但具有张力的表达。
 
 </div>
 
 </section>
 
-<footer id="contact">
+<section class="section">
 
-© 2026 姜惟 Personal Website
+<div class="section-title">
 
-</footer>
+PHILOSOPHY
 
-<script>
+</div>
 
-document.addEventListener("mousemove",(e)=>{
+<div class="section-text">
 
-document.body.style.setProperty(
-"--x",
-e.clientX+"px"
-);
+Minimal.
 
-document.body.style.setProperty(
-"--y",
-e.clientY+"px"
-);
+Dark.
 
-})
+Emotional.
 
-</script>
+Creating visual experiences that feel
+
+<span>
+
+cinematic, silent and alive.
+
+</span>
+
+</div>
+
+</section>
 
 </body>
 </html>
