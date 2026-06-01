@@ -1,4 +1,3 @@
-# wei.github.io
 <!DOCTYPE html>
 <html lang="zh">
 <head>
